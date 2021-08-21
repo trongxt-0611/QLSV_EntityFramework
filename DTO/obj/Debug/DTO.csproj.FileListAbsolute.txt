@@ -1,0 +1,12 @@
+F:\WinForm\QLSV_EF\DTO\bin\Debug\DTO.dll
+F:\WinForm\QLSV_EF\DTO\bin\Debug\DTO.pdb
+F:\WinForm\QLSV_EF\DTO\obj\Debug\DTO.csproj.AssemblyReference.cache
+F:\WinForm\QLSV_EF\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+F:\WinForm\QLSV_EF\DTO\obj\Debug\DTO.dll
+F:\WinForm\QLSV_EF\DTO\obj\Debug\DTO.pdb
+F:\WinForm\QLSV_EF\DTO\bin\Debug\DTO.dll.config
+F:\WinForm\QLSV_EF\DTO\bin\Debug\EntityFramework.dll
+F:\WinForm\QLSV_EF\DTO\bin\Debug\EntityFramework.SqlServer.dll
+F:\WinForm\QLSV_EF\DTO\bin\Debug\EntityFramework.xml
+F:\WinForm\QLSV_EF\DTO\bin\Debug\EntityFramework.SqlServer.xml
+F:\WinForm\QLSV_EF\DTO\obj\Debug\DTO.csproj.CopyComplete

@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess.cs" />
     <Compile Include="DataTypePropertyAttributeConvention.cs" />
     <Compile Include="CreateDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

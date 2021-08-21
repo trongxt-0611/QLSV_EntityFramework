@@ -125,16 +125,16 @@ namespace BLL
             {
                 if (dgv.SelectedRows.Count > 0)
                 {
-                    QlsvContext db = new QlsvContext();
                     foreach (DataGridViewRow i in dgv.SelectedRows)
                     {
                         DialogResult result = MessageBox.Show("Muốn xóa sv: " + i.Cells["Name"].Value.ToString() + "?",
                         "Hỏi xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (result == DialogResult.Yes) {
                             int mssv = int.Parse(i.Cells["Mssv"].Value.ToString());
-                            SV svdel = db.SVs.Find(mssv);
-                            db.SVs.Remove(svdel);
-                            db.SaveChanges();
+                            if (DataAccess.Instance.Delete(mssv))
+                            {
+                                MessageBox.Show("Xoa thanh cong");
+                            }
                         }
                         
                     }
@@ -147,72 +147,20 @@ namespace BLL
         }
         public List<SV> getListSvByIdAndName(int id, string name)
         {
-            QlsvContext db = new QlsvContext();
-            if (id == 0)
-            {
-                if (string.IsNullOrEmpty(name))
-                {
-                    return db.SVs.ToList();
-                }
-                else
-                {
-                    return db.SVs.Where(s => s.Name.Contains(name)).ToList();
-                }
-            }
-            else
-            {
-                if (string.IsNullOrEmpty(name))
-                {
-                    return db.SVs.Where(s => s.IdLop == id).ToList();
-                }
-                else
-                {
-                    return db.SVs.Where(s => s.IdLop == id && s.Name.Contains(name)).ToList();
-                }
-            }
+            return DataAccess.Instance.GetListSV(id, name);
         }
         public bool AddOrEdit(SV sv, int? mssvOfForm2)
         {
             if (mssvOfForm2 == null)
             {
-                return Add(sv);
+                return DataAccess.Instance.Add(sv);
             }
             else
             {
-                return Edit(sv);
+                return DataAccess.Instance.Edit(sv);
             }
         }
-        public bool Add(SV sv)
-        {
-            try
-            {
-                QlsvContext db = new QlsvContext();
-                db.SVs.Add(sv);
-                db.SaveChanges();
-                return true;
-            }
-            catch(Exception)
-            {
-                return false;
-            }
-        }
-        public bool Edit(SV sv)
-        {
-            try
-            {
-                QlsvContext db = new QlsvContext();
-                SV svEdit = db.SVs.Find(sv.Mssv);
-                svEdit.Name = sv.Name;
-                svEdit.Gender = sv.Gender;
-                svEdit.BirthDay = sv.BirthDay;
-                svEdit.IdLop = sv.IdLop;
-                db.SaveChanges();
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
+        
+        
     }
 }
